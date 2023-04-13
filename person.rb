@@ -11,6 +11,7 @@ class Person < Nameable
     @parent_permission = parent_permission
     @age = age
     @rentals = []
+    @id = Random.rand(1..1000)
   end
 
   def add_rental(book, date)

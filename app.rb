@@ -26,4 +26,9 @@ class App
   def add_rental(date, book, person)
     Rental.new(date, book, person)
   end
+
+  def rentals(person_id)
+    person = @people.find { |p| p.id == person_id }
+    person.rentals
+  end
 end
