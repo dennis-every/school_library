@@ -1,3 +1,8 @@
+require './book'
+require './rental'
+require './student'
+require './teacher'
+
 class App
   attr_reader :books, :people
 
@@ -16,5 +21,9 @@ class App
 
   def add_book(book)
     @books.push(book) unless @books.include?(book)
+  end
+
+  def add_rental(date, book, person)
+    Rental.new(date, book, person)
   end
 end
