@@ -81,7 +81,7 @@ class App
     name = gets_name
     specialization = gets_specialization
     teacher = Teacher.new(age, specialization, name)
-    add_teacher(teacher)
+    add_teacher(student)
     puts 'Person created successfully!'
   end
 
