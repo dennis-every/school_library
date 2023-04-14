@@ -1,8 +1,9 @@
-class EntryPoint
+require './app'
+
+class Main
   def initialize
     puts 'Welcome to School Library App!'
-    puts ''
-    menu
+    @app = App.new
   end
 
   def menu
@@ -14,13 +15,35 @@ class EntryPoint
     puts '5 - Create a rental'
     puts '6 - List all rentals for a given person id'
     puts '7 - Exit'
-    selected_option = gets.chomp
-    puts "You selected option #{selected_option}"
+  end
+
+  def options
+    {
+      1 => 'list_books',
+      2 => 'list_people',
+      3 => 'create_person',
+      4 => 'create_book',
+      5 => 'create_rental',
+      6 => 'list_rentals',
+      7 => 'exit'
+    }
+  end
+
+  def run
+    puts ''
+    menu
+    selected = gets.chomp.to_i
+    puts ''
+    puts "You selected option #{selected}"
+    case selected
+    when 1..7
+      @app.send(options[selected])
+    else
+      puts 'Please select a valid option:'
+    end
+    run
   end
 end
 
-def main
-  EntryPoint.new
-end
-
-main
+main = Main.new
+main.run
