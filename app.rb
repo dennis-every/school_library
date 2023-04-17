@@ -1,4 +1,5 @@
 require './book'
+require './books_collection'
 require './rental'
 require './student'
 require './teacher'
@@ -7,8 +8,10 @@ class App
   attr_reader :books, :people
 
   def initialize
-    @books = []
-    @people = []
+    @books_collection = BooksCollection.new
+    @books = @books_collection.books
+    student = Student.new(12, 'Math', 'Julia')
+    @people = [student]
   end
 
   def add_teacher(teacher)
@@ -17,10 +20,6 @@ class App
 
   def add_student(student)
     @people.push(student) unless @people.include?(student)
-  end
-
-  def add_book(book)
-    @books.push(book) unless @books.include?(book)
   end
 
   def add_rental(date, book, person)
@@ -33,13 +32,7 @@ class App
   end
 
   def list_books
-    if @books == []
-      puts 'Sorry, we have no books :-('
-    else
-      @books.each_with_index do |book, index|
-        puts %(#{index + 1} - Title: "#{book.title}", Author: #{book.author})
-      end
-    end
+    @books_collection.list_books
   end
 
   def list_people
@@ -120,13 +113,8 @@ class App
   end
 
   def create_book
-    print 'Title: '
-    title = gets.chomp
-    print 'Author: '
-    author = gets.chomp
-    book = Book.new(title, author)
-    add_book(book)
-    puts 'Book created successfully!'
+    book = Book.create_book
+    @books_collection.add_book(book)
   end
 
   def create_rental
