@@ -14,6 +14,69 @@ class Person < Nameable
     @id = Random.rand(1..1000)
   end
 
+  def self.create_person
+    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+    selected = gets.chomp.to_i
+    case selected
+    when 1
+      create_student
+    when 2
+      create_teacher
+    else
+      puts 'Please select a valid option:'
+      create_person
+    end
+  end
+
+  def self.create_student
+    age = gets_age
+    name = gets_name
+    classroom = gets_classroom
+    parent_permission = gets_parent_permission
+    Student.new(age, classroom, name, parent_permission: parent_permission)
+  end
+
+  def self.create_teacher
+    age = gets_age
+    name = gets_name
+    specialization = gets_specialization
+    Teacher.new(age, specialization, name)
+  end
+
+  def self.gets_age
+    print 'Age: '
+    gets.chomp
+  end
+
+  def self.gets_classroom
+    print 'Classroom: '
+    gets.chomp
+  end
+
+  def self.gets_name
+    print 'Name: '
+    gets.chomp
+  end
+
+  def self.gets_parent_permission
+    print 'Has parent permission? [Y/N]: '
+    parent_permission = gets.chomp.upcase
+    case parent_permission
+    when 'Y'
+      true
+    when 'N'
+      false
+    else
+      puts 'Please select a valid option'
+      gets_parent_permission
+    end
+  end
+
+  def self.gets_specialization
+    print 'Specialization: '
+    gets.chomp
+  end
+
   def add_rental(book, date)
     Rental.new(date, book, self)
   end
