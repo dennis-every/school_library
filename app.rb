@@ -1,6 +1,7 @@
 require './book'
 require './books_collection'
 require './people_collection'
+require './rentals_collection'
 require './rental'
 require './student'
 require './teacher'
@@ -13,15 +14,8 @@ class App
     @books = @books_collection.books
     @people_collection = PeopleCollection.new
     @people = @people_collection.people
-  end
-
-  def add_rental(date, book, person)
-    Rental.new(date, book, person)
-  end
-
-  def rentals(person_id)
-    person = @people.find { |p| p.id == person_id }
-    person.rentals
+    @rentals_collection = RentalsCollection.new
+    @rentals = @rentals_collection.rentals
   end
 
   def list_books
@@ -43,49 +37,18 @@ class App
     puts 'Person created successfully!'
   end
 
-  def create_rental
-    return puts "Sorry, we don't have any books for rent" if @books == []
-    return puts "Sorry, we don't have registered people who can rent books" if @people == []
-
-    puts 'Select a book from the following list by number:'
-    @books.each_with_index do |book, index|
-      puts %[#{index}) Title: "#{book.title}", Author: #{book.author}]
-    end
-    selected_book = @books[gets.chomp.to_i]
-    puts %(You selected "#{selected_book.title}" written by #{selected_book.author})
-    puts ''
-
-    puts 'Select a person from the following list by number (not id):'
-    @people.each_with_index do |person, index|
-      puts %[#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}]
-    end
-    selected_person = @people[gets.chomp.to_i]
-    puts "You selected #{selected_person.name}"
-    puts ''
-
-    print 'Date: '
-    entered_date = gets.chomp
-
-    add_rental(entered_date, selected_book, selected_person)
-    puts 'Rental created successfully!'
+  def list_rentals
+    @rentals_collection.list_rentals(people = @people)
   end
 
-  def list_rentals
-    return puts "Sorry, we don't have any registered people" if @people == []
-
-    print 'ID of person: '
-    person_id = gets.chomp.to_i
+  def rentals(person_id)
     person = @people.find { |p| p.id == person_id }
-    return puts "Sorry, we don't have any person with this ID" unless person
+    person.rentals
+  end
 
-    if person.rentals.any?
-      puts 'Rentals:'
-      person.rentals.each do |rental|
-        puts %(Date: #{rental.date}, Book: "#{rental.book.title}" by #{rental.book.author})
-      end
-    else
-      puts "Sorry, we don't have any rentals registered for #{person.name}"
-    end
+  def create_rental
+    rental = Rental.create_rental(books = @books, people = @people)
+    @rentals_collection.add_rental(rental)
   end
 
   def exit
