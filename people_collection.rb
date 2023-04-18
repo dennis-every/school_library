@@ -20,5 +20,4 @@ class PeopleCollection
   def add_person(person)
     @people.push(person) unless @people.include?(person)
   end
-
 end

@@ -38,7 +38,7 @@ class App
   end
 
   def list_rentals
-    @rentals_collection.list_rentals(people = @people)
+    @rentals_collection.list_rentals(@people)
   end
 
   def rentals(person_id)
@@ -47,7 +47,7 @@ class App
   end
 
   def create_rental
-    rental = Rental.create_rental(books = @books, people = @people)
+    rental = Rental.create_rental(@books, @people)
     @rentals_collection.add_rental(rental)
   end
 

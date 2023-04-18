@@ -29,18 +29,18 @@ class Person < Nameable
   end
 
   def self.create_student
-    age = self.gets_age
-    name = self.gets_name
-    classroom = self.gets_classroom
-    parent_permission = self.gets_parent_permission
-    person = Student.new(age, classroom, name, parent_permission: parent_permission)
+    age = gets_age
+    name = gets_name
+    classroom = gets_classroom
+    parent_permission = gets_parent_permission
+    Student.new(age, classroom, name, parent_permission: parent_permission)
   end
 
   def self.create_teacher
-    age = self.gets_age
-    name = self.gets_name
-    specialization = self.gets_specialization
-    person = Teacher.new(age, specialization, name)
+    age = gets_age
+    name = gets_name
+    specialization = gets_specialization
+    Teacher.new(age, specialization, name)
   end
 
   def self.gets_age
@@ -68,7 +68,7 @@ class Person < Nameable
       false
     else
       puts 'Please select a valid option'
-      self.gets_parent_permission
+      gets_parent_permission
     end
   end
 
