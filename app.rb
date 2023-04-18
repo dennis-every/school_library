@@ -1,5 +1,6 @@
 require './book'
 require './books_collection'
+require './people_collection'
 require './rental'
 require './student'
 require './teacher'
@@ -10,16 +11,8 @@ class App
   def initialize
     @books_collection = BooksCollection.new
     @books = @books_collection.books
-    student = Student.new(12, 'Math', 'Julia')
-    @people = [student]
-  end
-
-  def add_teacher(teacher)
-    @people.push(teacher) unless @people.include?(teacher)
-  end
-
-  def add_student(student)
-    @people.push(student) unless @people.include?(student)
+    @people_collection = PeopleCollection.new
+    @people = @people_collection.people
   end
 
   def add_rental(date, book, person)
@@ -35,86 +28,19 @@ class App
     @books_collection.list_books
   end
 
-  def list_people
-    if @people == []
-      puts 'Nope, no one here :-('
-    else
-      @people.each_with_index do |person, index|
-        puts %(#{index + 1} - [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age})
-      end
-    end
-  end
-
-  def create_person
-    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
-    selected = gets.chomp.to_i
-    case selected
-    when 1
-      create_student
-    when 2
-      create_teacher
-    else
-      puts 'Please select a valid option:'
-      create_person
-    end
-  end
-
-  def create_student
-    age = gets_age
-    name = gets_name
-    classroom = gets_classroom
-    parent_permission = gets_parent_permission
-    student = Student.new(age, classroom, name, parent_permission: parent_permission)
-    add_student(student)
-    puts 'Person created successfully!'
-  end
-
-  def create_teacher
-    age = gets_age
-    name = gets_name
-    specialization = gets_specialization
-    teacher = Teacher.new(age, specialization, name)
-    add_teacher(teacher)
-    puts 'Person created successfully!'
-  end
-
-  def gets_age
-    print 'Age: '
-    gets.chomp
-  end
-
-  def gets_classroom
-    print 'Classroom: '
-    gets.chomp
-  end
-
-  def gets_name
-    print 'Name: '
-    gets.chomp
-  end
-
-  def gets_parent_permission
-    print 'Has parent permission? [Y/N]: '
-    parent_permission = gets.chomp.upcase
-    case parent_permission
-    when 'Y'
-      true
-    when 'N'
-      false
-    else
-      puts 'Please select a valid option'
-      gets_parent_permission
-    end
-  end
-
-  def gets_specialization
-    print 'Specialization: '
-    gets.chomp
-  end
-
   def create_book
     book = Book.create_book
     @books_collection.add_book(book)
+  end
+
+  def list_people
+    @people_collection.list_people
+  end
+
+  def create_person
+    person = Person.create_person
+    @people_collection.add_person(person)
+    puts 'Person created successfully!'
   end
 
   def create_rental
