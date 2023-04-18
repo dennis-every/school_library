@@ -12,7 +12,7 @@
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
-  - [👥 Author ](#-author-)
+  - [👥 Authors ](#-authors-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
@@ -45,6 +45,7 @@ A simple school library app to demonstrate object oriented programming using Rub
 - **Describe the SOLID principles of OOP.**
 - **Refactor your own Ruby code after gaining new knowledge.**
 - **Apply Ruby best practices and language style guides in code.**
+- **Preserve data.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -105,7 +106,6 @@ To run the project, execute the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **Project 6: preserve data.**
 - **Project 7: unit tests.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
