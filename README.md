@@ -42,6 +42,9 @@ A simple school library app to demonstrate object oriented programming using Rub
 ### Key Features <a name="key-features"></a>
 
 - **Run a school library program using the command line**
+- **Describe the SOLID principles of OOP.**
+- **Refactor your own Ruby code after gaining new knowledge.**
+- **Apply Ruby best practices and language style guides in code.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -75,14 +78,14 @@ No instalation needed.
 To run the project, execute the following command:
 
 ```sh
-  ruby run.rb
+  ruby main.rb
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
 
-## 👥 Author <a name="author"></a>
+## 👥 Authors <a name="authors"></a>
 
 👤 **Dennis Every**
 
@@ -90,17 +93,18 @@ To run the project, execute the following command:
 - Twitter: [@dennis_every](https://twitter.com/dennis_every)
 - LinkedIn: [dennis-every](https://www.linkedin.com/in/dennis-every/)
 
+👤 **Nilton Segura**
+
+- GitHub: [@Nkaleth](https://github.com/Nkaleth)
+- Twitter: [@NoeSeguraL](https://twitter.com/NoeSeguraL)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/niltonsegura/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **Project 1: add Person, Student, and Teacher classes.**
-- **Project 2: use the "Decorator" design pattern.**
-- **Project 3: set up associations.**
-- **Project 4: add basic UI.**
-- **Project 5: refactor your code.**
 - **Project 6: preserve data.**
 - **Project 7: unit tests.**
 
@@ -121,8 +125,6 @@ Feel free to check the [issues page](../../issues/).
 ## ⭐️ Show your support <a name="support"></a>
 
 If you like this project feel free to fork it and use it as you need and don't forget to start it!.
-
-If you like this project...
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
