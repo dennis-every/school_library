@@ -34,7 +34,6 @@ describe Person do
 
     it 'returns the person with the given id' do
       person1 = Person.new(30, 'Alice')
-      person2 = Person.new(40, 'Bob')
       expect(Person.find_by_id(person1.id)).to eq(person1)
     end
   end

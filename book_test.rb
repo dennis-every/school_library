@@ -24,7 +24,6 @@ describe Book do
   describe '.find_by_id' do
     it 'returns the book with the given id' do
       book1 = Book.new('The Great Gatsby', 'F. Scott Fitzgerald')
-      book2 = Book.new('To Kill a Mockingbird', 'Harper Lee')
       expect(Book.find_by_id(book1.id)).to eq(book1)
     end
   end
