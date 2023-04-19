@@ -5,14 +5,13 @@ class BooksCollection
 
   def initialize
     @books = []
-    if File.exist?('./data/books.json')
-      books = FileHandler.read_file('./data/books.json')
-      books.map do |book_hash|
-        book = Book.new(book_hash['title'], book_hash['author'])
-        @books.push(book)
-      end
+    return unless File.exist?('./data/books.json')
+
+    books = FileHandler.read_file('./data/books.json')
+    books.map do |book_hash|
+      book = Book.new(book_hash['title'], book_hash['author'])
+      @books.push(book)
     end
-    @books
   end
 
   def list_books

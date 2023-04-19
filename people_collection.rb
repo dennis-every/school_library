@@ -5,14 +5,13 @@ class PeopleCollection
 
   def initialize
     @people = []
-    if File.exist?('./data/people.json')
-      people = FileHandler.read_file('./data/people.json')
-      people.map do |hash|
-        person = Person.new(hash['age'], hash['name'])
-        @people.push(person)
-      end
+    return unless File.exist?('./data/people.json')
+
+    people = FileHandler.read_file('./data/people.json')
+    people.map do |hash|
+      person = Person.new(hash['age'], hash['name'])
+      @people.push(person)
     end
-    @books
   end
 
   def list_people

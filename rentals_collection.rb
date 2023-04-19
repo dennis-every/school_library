@@ -5,14 +5,13 @@ class RentalsCollection
 
   def initialize
     @rentals = []
-    if File.exist?('./data/rentals.json')
-      rentals = FileHandler.read_file('./data/rentals.json')
-      rentals.map do |hash|
-        rental = Rental.new(hash['date'], hash['book'], hash['person'])
-        @rentals.push(rental)
-      end
+    return unless File.exist?('./data/rentals.json')
+
+    rentals = FileHandler.read_file('./data/rentals.json')
+    rentals.map do |hash|
+      rental = Rental.new(hash['date'], hash['book'], hash['person'])
+      @rentals.push(rental)
     end
-    @books
   end
 
   def list_rentals(people)
