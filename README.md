@@ -46,6 +46,7 @@ A simple school library app to demonstrate object oriented programming using Rub
 - **Refactor your own Ruby code after gaining new knowledge.**
 - **Apply Ruby best practices and language style guides in code.**
 - **Preserve data.**
+- **unit tests.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -106,7 +107,7 @@ To run the project, execute the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **Project 7: unit tests.**
+- **Add SQL schema to create database**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
