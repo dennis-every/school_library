@@ -9,7 +9,7 @@ class RentalsCollection
 
     rentals = FileHandler.read_file('./data/rentals.json')
     rentals.map do |hash|
-      rental = Rental.new(hash['date'], hash['book'], hash['person'])
+      rental = Rental.new(hash['date'], hash['book_id'], hash['person_id'])
       @rentals.push(rental)
     end
   end
@@ -26,7 +26,8 @@ class RentalsCollection
     if person.rentals.any?
       puts 'Rentals:'
       person.rentals.each do |rental|
-        puts %(Date: #{rental.date}, Book: "#{rental.book.title}" by #{rental.book.author})
+        book = Book.find_by_id(rental.book_id)
+        puts %(Date: #{rental.date}, Book: "#{book.title}" by #{book.author})
       end
     else
       puts "Sorry, we don't have any rentals registered for #{person.name}"

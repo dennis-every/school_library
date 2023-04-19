@@ -51,7 +51,7 @@ class App
   end
 
   def create_rental
-    rental = Rental.create_rental(@books, @people)
+    rental = Rental.create_rental
     @rentals_collection.add_rental(rental)
   end
 
