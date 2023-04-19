@@ -22,6 +22,8 @@ module FileHandler
     end
     return if data.empty?
 
+    Dir.mkdir('./data') unless File.directory?('./data')
+
     File.write("./data/#{filename}", JSON.pretty_generate(data))
   end
 end
