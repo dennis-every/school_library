@@ -9,7 +9,14 @@ class PeopleCollection
 
     people = FileHandler.read_file('./data/people.json')
     people.map do |hash|
-      person = Person.new(hash['age'], hash['name'])
+      person = case hash['type']
+               when 'Student'
+                 Student.new(hash['age'], hash['classroom'], hash['name'])
+               when 'Teacher'
+                 Teacher.new(hash['age'], hash['specialization'], hash['name'])
+               else
+                 Person.new(hash['age'], hash['name'])
+               end
       @people.push(person)
     end
   end

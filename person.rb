@@ -12,6 +12,7 @@ class Person < Nameable
     @age = age
     @rentals = []
     @id = Random.rand(1..1000)
+    @type = self.class
   end
 
   def self.create_person

@@ -55,10 +55,6 @@ class App
     @rentals_collection.add_rental(rental)
   end
 
-  def save_books
-    FileHandler.save(books, 'books.json')
-  end
-
   def exit
     FileHandler.save(@books, 'books.json') if @books.any?
     FileHandler.save(@people, 'people.json') if @people.any?
