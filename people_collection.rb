@@ -5,6 +5,20 @@ class PeopleCollection
 
   def initialize
     @people = []
+    return unless File.exist?('./data/people.json')
+
+    people = FileHandler.read_file('./data/people.json')
+    people.map do |hash|
+      person = case hash['type']
+               when 'Student'
+                 Student.new(hash['age'], hash['classroom'], hash['name'])
+               when 'Teacher'
+                 Teacher.new(hash['age'], hash['specialization'], hash['name'])
+               else
+                 Person.new(hash['age'], hash['name'])
+               end
+      @people.push(person)
+    end
   end
 
   def list_people

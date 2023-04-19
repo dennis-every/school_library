@@ -5,9 +5,13 @@ require './rentals_collection'
 require './rental'
 require './student'
 require './teacher'
+require './file_handler'
+require 'json'
 
 class App
   attr_reader :books, :people
+
+  include FileHandler
 
   def initialize
     @books_collection = BooksCollection.new
@@ -47,11 +51,14 @@ class App
   end
 
   def create_rental
-    rental = Rental.create_rental(@books, @people)
+    rental = Rental.create_rental
     @rentals_collection.add_rental(rental)
   end
 
   def exit
+    FileHandler.save(@books, 'books.json') if @books.any?
+    FileHandler.save(@people, 'people.json') if @people.any?
+    FileHandler.save(@rentals, 'rentals.json') if @rentals.any?
     puts 'Thanks for using this app - bye!'
     abort
   end
