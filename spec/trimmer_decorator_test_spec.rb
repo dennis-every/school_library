@@ -1,4 +1,4 @@
-require './trimmer_decorator.rb'
+require './trimmer_decorator'
 
 # describe TrimmerDecorator do
 #   context "valid input" do
@@ -8,9 +8,9 @@ require './trimmer_decorator.rb'
 #       expect(to.correct_name(name).length).to be "10"
 #     end
 #   end
-  
-  # context "invalid input" do
-  #   it "expect not to trim a name of 3 characters" do
-  #   end
-  # end
+
+# context "invalid input" do
+#   it "expect not to trim a name of 3 characters" do
+#   end
+# end
 # end

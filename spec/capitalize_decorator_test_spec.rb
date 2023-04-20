@@ -1,0 +1,1 @@
+require './capitalize_decorator'
